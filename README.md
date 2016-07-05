@@ -38,3 +38,11 @@ The icons are displayed by using an `i` element and adding the base class `wi` a
 
 To add a modifier, include the class you want after the icon name, which looks like `<i class="wi wi-day-sunny wi-flip-vertical"></i>`. You can flip, rotate, or add a fixed width. See it all at [http://weathericons.io](http://weathericons.io).
 
+## Credit
+The icon designs are originally by [Lukas Bischoff](http://www.twitter.com/artill). Icon art for v1.1 forward, HTML, Less, and CSS are by [me (Erik)](http://www.helloerik.com).
+
+## Licensing
+
+* Weather Icons licensed under [SIL OFL 1.1](http://scripts.sil.org/OFL)
+* Code licensed under [MIT License](http://opensource.org/licenses/mit-license.html)
+* Documentation licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0)
