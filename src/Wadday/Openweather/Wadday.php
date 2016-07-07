@@ -12,6 +12,7 @@ class Wadday {
 	{
 		$this->api 		= $api;
 		$this->city 	= $city;
+		$this->units = 'metric';
 	}
 
 	public function fetch()
@@ -19,7 +20,8 @@ class Wadday {
 		$url_point = "http://api.openweathermap.org/data/2.5/weather?";
 		$params = [
 			'appid'	=> $this->api,
-			'id'	=> $this->city
+			'id'	=> $this->city,
+			'units'	=> $this->units
 		];
 
 		$url = $url_point.http_build_query($params);
@@ -67,22 +69,21 @@ class Wadday {
 				'lon'			=> $data['coord']['lon'], 		//lontitude
 				'lat'			=> $data['coord']['lat'],		//latitude
 				//weather
-				'wid'			=> $data['weather'][0]['id'], 	//retreive weather icon from the id
-				'condition'		=> $data['weather'][0]['main'], //weather mainly through out the day
-				'description'	=> ucfirst($data['weather'][0]['description']),
+				'wid'			=> $data['weather'][0]['id'], 	
+				'condition'		=> $data['weather'][0]['main'], 
+				'description'		=> ucfirst($data['weather'][0]['description']),
 				'icon_css'		=> $this->icon_css($data['weather'][0]['id']),
 				'icon_img'		=> $this->icon_img($data['weather'][0]['icon']),
-				'icon_custom' 	=> $this->icon_custom($data['weather'][0]['icon']),
+				'icon_custom' 		=> $this->icon_custom($data['weather'][0]['icon']),
 				
 				'base'			=> $data['base'],
 				//main
 				'temperature'	=> round($data['main']['temp']),
 				'pressure'		=> $data['main']['pressure'],
-				'humidity' 		=> $data['main']['humidity'],
+				'humidity' 		=> $data['main']['humidity']."%",
 				'min'			=> round($data['main']['temp_min']),
 				'max'			=> round($data['main']['temp_max']),
-				'sea'			=> $data['main']['sea_level'],
-				'ground'		=> $data['main']['grnd_level'],
+				
 				//wind
 				'wind_speed'	=> $this->transform(0, $data['wind']['speed']),
 				'wind_deg'		=> $data['wind']['deg'],
@@ -119,7 +120,7 @@ class Wadday {
 	 */
 	public function icon_css($code = null)
 	{
-		return "wi-owm-".$code;
+		return "wi wi-owm-".$code;
 	}
 
 	/**
