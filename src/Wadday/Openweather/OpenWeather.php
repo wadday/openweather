@@ -7,14 +7,19 @@ use Wadday\Openweather\Wadday as wcoms;
 class OpenWeather
 {
 	protected $key = "178c57b36348a4feedfef027a7ffd156";
-	protected $city = "1282028";
+	protected $city = "1282027"; //Maldives City id
 	
-	public function get($type)
+
+	public function get($type = null)
 	{
 
 		if ($type == 1) {
 			return $this->simple();
-		} 
+		} else {
+			
+			$data = $this->mix();
+			return $data;
+		}
 
 	}
 
