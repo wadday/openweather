@@ -19,7 +19,7 @@ Get current weather.
 
 	use Openweather;
    
-   	$data = Openweather::get();
+   	$data = Openweather::get(1); //simple way formated for website top ribbon
 
 ## CSS Icon (with weathericons.io)
 
